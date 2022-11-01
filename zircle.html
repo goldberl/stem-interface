@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Ecosystème</title>
+
+	<!-- les liens -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+	 <script type="text/javascript" src="https://unpkg.com/vue"></script>
+  	 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script type="text/javascript" src="https://unpkg.com/zircle"></script>
+     <link href="https://unpkg.com/zircle/dist/zircle.css" rel="stylesheet">
+
+	 <link rel="stylesheet" type="text/css" media="screen" href="example.css" /> <!-- on relie la page html avec la page css associée -->
+	 
+</head>
+
+<body>
+
+	 <div class="container2">
+		<div id="app">
+			<z-canvas :views='$options.components' style="width: 100%; height: 700px; background : #FFFFFF;">
+			</z-canvas>
+		  </div>
+	</div>
+
+
+	<script>
+		// More zircle-ui at: 
+		// https://github.com/zircleUI/zircleUI
+		// http://zircle.io
+
+		
+
+		var demo = {angle: 0}
+
+		var demo1 = {angle1: 0}
+
+		const store = {
+		  debug: true,
+		  state: {
+			ang: 0,
+			ang1: 0,
+			dist: 0,
+			mov: TweenLite.to(demo, 700, {angle:365, repeat: -1, onUpdate: function () {
+			  store.state.ang = demo.angle
+			}}),
+			mov1: TweenLite.to(demo1, 700, {angle1:365, repeat: -1, onUpdate: function () {
+			  store.state.ang1 = demo1.angle1
+			}}),
+			ecosystem: [
+			  {name: 'En savoir plus', icon: 'fa-question', viewName: 'help',elements: [
+				{name: 'Forum Vue.js', url: 'https://forum.vuejs.org/', icon: 'fa-comments'},
+				{name : 'Zircle-ui', url: 'https://zircleui.github.io/docs/?utm_source=zircle', icon: 'fa-github'},
+				{name : 'Doc TweenLite', url: 'https://greensock.com/tweenlite/', icon: 'fa-th-list'}
+				]},
+			  {name: 'A remplir', icon: 'fa-edit', viewName: 'tooling', elements: [
+				{name: 'Lien n°1', url: '', icon: 'fa-link'},
+				{name: 'Lien n°2', url: '', icon: 'fa-link'},
+				{name: 'Lien n°3', url: '', icon: 'fa-link'}]
+			  },
+			  {name: 'Exemple', icon: 'fa-eye', viewName: 'core',elements: [
+				{name: 'Opinaka', url: 'https://opinaka.fr/', icon: 'fa-home'},
+				{name: 'Articles', url: 'https://wm.opinaka.net/wp-admin/edit.php', icon: 'fa-clone'}
+			  ]},
+			   {name: 'Ressources', icon: 'fa-book', viewName: 'news', elements: [
+				{name: 'Template Prezi', url: 'https://prezi.com/presentation-template/explanation-clock/', icon: 'fa-globe'},
+				{name: 'Template Codepen', url: 'https://codepen.io/zircle/pen/LeqKGK', icon: 'fa-code'}
+			  ]}
+			]
+		  }
+		}
+
+		const ecosystem_template = `
+		<z-view class="main">
+
+		  <span><strong>{{ ecosystem.name }}</strong></span><br>
+		  <span> Présentation </span>
+
+		  <section slot="extension">
+
+				<z-spot 
+				  v-for="(element, index) in ecosystem.elements"
+				  class="inactive"
+				  :angle="(360 / ecosystem.elements.length * index) - sharedState.ang1 * 11"
+				  :distance="130"
+				  size="medium"
+				  @mouseover.native="active"
+				  @touchstart.native="active"
+				  @mouseout.native="inactive"
+				  @touchend.native="inactive"
+     					@click.native.prevent="this.window.open(element.url, '_blank')"
+				  :label="element.name"
+				  :key= "index">
+
+				  <i class="fa" :class="element.icon"></i>
+
+				</z-spot>
+
+			</section>
+
+		</z-view>`
+
+		const resources = {
+		  name: 'resources',
+		  template: ecosystem_template,
+		  data () {
+			return {
+			  sharedState: store.state,
+			  ecosystem: store.state.ecosystem[4]
+			}
+		  },
+		  methods: {
+			active (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('inactive')) {
+				target.classList.remove('inactive')
+				target.classList.add('active')
+				this.sharedState.mov1.pause()
+			  }
+			},
+			inactive (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('active')) {
+				target.classList.remove('active')
+				target.classList.add('inactive')
+				this.sharedState.mov1.play()
+			  }
+			}
+		  },
+		  destroyed () {
+			this.sharedState.mov.play()
+		  }
+		}
+
+		const news = {
+		  name: 'news',
+		  template: ecosystem_template,
+		  data () {
+			return {
+			  sharedState: store.state,
+			  ecosystem: store.state.ecosystem[3]
+			}
+		  },
+		  methods: {
+			active (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('inactive')) {
+				target.classList.remove('inactive')
+				target.classList.add('active')
+				this.sharedState.mov1.pause()
+			  }
+			},
+			inactive (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('active')) {
+				target.classList.remove('active')
+				target.classList.add('inactive')
+				this.sharedState.mov1.play()
+			  }
+			}
+		  },
+		  destroyed () {
+			this.sharedState.mov.play()
+		  }
+		}
+
+		const core = {
+		  name: 'core',
+		  template: ecosystem_template,
+		  data () {
+			return {
+			  sharedState: store.state,
+			  ecosystem: store.state.ecosystem[2]
+			}
+		  },
+		  methods: {
+			active (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('inactive')) {
+				target.classList.remove('inactive')
+				target.classList.add('active')
+				this.sharedState.mov1.pause()
+			  }
+			},
+			inactive (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('active')) {
+				target.classList.remove('active')
+				target.classList.add('inactive')
+				this.sharedState.mov1.play()
+			  }
+			}
+		  },
+		  destroyed () {
+			this.sharedState.mov.play()
+		  }
+		}
+
+		const tooling = {
+		  name: 'tooling',
+		  template: ecosystem_template,
+		  data () {
+			return {
+			  sharedState: store.state,
+			  ecosystem: store.state.ecosystem[1]
+			}
+		  },
+		  methods: {
+			active (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('inactive')) {
+				target.classList.remove('inactive')
+				target.classList.add('active')
+				this.sharedState.mov1.pause()
+			  }
+			},
+			inactive (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('active')) {
+				target.classList.remove('active')
+				target.classList.add('inactive')
+				this.sharedState.mov1.play()
+			  }
+			}
+		  },
+		  destroyed () {
+			this.sharedState.mov.play()
+		  }
+		}
+
+		const help = {
+		  name: 'help',
+		  template: ecosystem_template,
+		  data () {
+			return {
+			  sharedState: store.state,
+			  ecosystem: store.state.ecosystem[0]
+			}
+		  },
+		  methods: {
+			active (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('inactive')) {
+				target.classList.remove('inactive')
+				target.classList.add('active')
+				this.sharedState.mov1.pause()
+			  }
+			},
+			inactive (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('active')) {
+				target.classList.remove('active')
+				target.classList.add('inactive')
+				this.sharedState.mov1.play()
+			  }
+			}
+		  },
+		  destroyed () {
+			this.sharedState.mov.play()
+		  }
+		}
+
+		const home = {
+		  template: `<z-view class="main">
+
+		  <span><img src="https://blogs.univ-poitiers.fr/t-roy/files/2014/04/prezi.png" width="40%" height="60%" /></span><br>
+		  <span><strong> Presentation </strong></span> 
+		  <br>
+		  <span> Via zircle-ui et Vue.js </span> 
+  
+		  <section slot="extension">
+
+			<z-spot 
+			  v-for="(element, index) in ecosystem"
+			  class="inactive"
+			  :angle="(360 / ecosystem.length * index) + sharedState.ang * 5"
+			  :distance="135"
+			  size="medium"
+			  :to-view="element.viewName"
+			  @mouseover.native="active"
+			  @touchstart.native="active"
+			  @mouseout.native="inactive"
+			  @touchend.native="inactive"
+			  :label="element.name"
+			  :key="index">
+
+			  <i class="fa" :class="element.icon"></i>
+
+			  <section slot="extension">
+
+				<z-spot 
+				  v-for="(subelement, index) in element.elements"
+				  style="background-color: #3dbceb; border: none; "
+				  :angle="(360 / element.elements.length * index) - sharedState.ang1 * 11"
+				  :distance="132"
+				  size="xxs"
+				  :key="index">
+				</z-spot>
+
+			  </section>
+
+			</z-spot>
+
+		  </section>
+
+		</z-view>`,
+		  data () {
+			return {
+			  sharedState: store.state,
+			  ecosystem: store.state.ecosystem
+			}
+		  },
+		  methods: {
+			active (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('inactive')) {
+				target.classList.remove('inactive')
+				target.classList.add('active')
+				this.sharedState.mov.pause()
+			  }
+			},
+			inactive (event) {
+			  var target = event.target.parentElement
+			  if (target.classList.contains('active')) {
+				target.classList.remove('active')
+				target.classList.add('inactive')
+				this.sharedState.mov.play()
+			  }
+			}
+		  },
+		  updated () {
+			var vm = this
+			this.$nextTick(function () {
+			  if (vm.$el.classList.contains('is-previous-view') || vm.$el.classList.contains('is-past-view')) {
+				vm.sharedState.mov.pause()
+			  }
+			})
+		  }
+		}
+
+		new Vue({
+		  el: '#app',
+		  components: {
+			home,
+			help,
+			tooling,
+			resources,
+			core,
+			news
+		  },
+		  mounted () {
+			this.$zircle.setView('home')
+		  }
+		})
+	</script>
+</body>
