@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://anvaka.github.io/panzoom/demo/attach-via-script.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="Description" content="Pan and zoom svg elements demo ">
+  <meta name="keywords" content="svg, pan, zoom">
+  <meta name="author" content="Andrei Kashcha">
+  <meta name="title" content="SVG panzoom demo">
+
+  <title>STEM INTERFACE</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="panzoom.js" query="#scene" name="pz" pz-bounds="true" pz-autocenter="true"></script>
+
+  </head>
+  <body>
+    <svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" tabindex="0">
+      <g>
+        <g id='scene'>
+           <circle cx='0' cy='0' r='3' fill='red'></circle>
+           <circle cx='0' cy='1400' r='3' fill='brown'></circle>
+           <circle cx='1400' cy='0' r='3' fill='blue'></circle>
+           <circle cx='1400' cy='1400' r='3' fill='green'></circle>
+
+           <rect id="svg_1" y="0" width="1400" height="200" rx="1" fill = '#f94144'></rect>
+           <rect id="svg_2" y="200" width="1400" height="200" rx="1" fill = '#f3722c'></rect>
+           <rect id="svg_3" y="400" width="1400" height="200" rx="1" fill = '#f8961e'></rect>
+           <rect id="svg_4" y="600" width="1400" height="200" rx="1" fill = '#f9c74f'></rect>
+           <rect id="svg_5" y="800" width="1400" height="200" rx="1" fill = '#90be6d'></rect>
+           <rect id="svg_6" y="1000" width="1400" height="200" rx="1" fill = '#43aa8b'></rect>
+           <rect id="svg_7" y="1200" width="1400" height="200" rx="1" fill = '#577590'></rect>
+
+           <text font-size="50" id="svg_1.1" x="10" y="50">Logic</text>
+           <text font-size="50" id="svg_2.1" x="10" y="250">Math</text>
+           <text font-size="50" id="svg_3.1" x="10" y="450">Physics</text>
+           <text font-size="50" id="svg_4.1" x="10" y="650">Chemistry</text>
+           <text font-size="50" id="svg_5.1" x="10" y="850">Biology</text>
+           <text font-size="50" id="svg_6.1" x="10" y="1050">Medicine</text>
+           <text font-size="50" id="svg_7.1" x="10" y="1250">Ecology</text>
+
+
+           <circle cx='50' cy='300' r='25'></circle>
+
+           <circle cx='50' cy='100' r='25' fill='grey'></circle>
+
+
+           <!-- <circle cx='50' cy='300' r='25' fill='grey'>
+             <title>
+                "The Lady or the Tiger?" adapted
+                SHORT STORY
+                Author: Frank Stockton
+                Stem1: math
+                Stem2: computer science
+                Stem3: permutations
+                Stem4: decision trees
+                Scope: entirety
+                Grade: middle, high, college
+                Summary: An accused man must choose between life and death based on the unreliable word of his lover who may or may not
+                                 have received accurate information.
+                Description: 3 one hour classes: Students write endings to a cliffhanger short story then explore the number of possible endings,
+                                     the decision points involved, the algorithm that determines the outcome and how to express it all in binary.
+                                     * 3 one hour classes
+             </title>
+           </circle> -->
+
+           <!-- <circle cx='50' cy='100' r='25' fill='grey'>
+             <title>
+                The Maltese Falcon
+                NOVEL
+                Author: Dashiell Hammett
+                Stem1: logic
+                Stem2: computer science
+                Stem3: algorithms
+                Scope: entirety
+                Grade: high college
+                Summary: Using cold logic and robust algorithms, a detective unravels a knot of crime and deception but must confront
+                                his own humanity.
+                Description: 15 one hour classes: In addition to exploring this classic murder mystery as literature, students abstract the
+                                     relations of truth and supposition and the detection algorithms needed to test and sort innocence and
+                                     guilt. Is one's humanity the price of employing such techniques?
+             </title>
+           </circle> -->
+
+           <circle cx='150' cy='100' r='25' fill='grey'>
+             <title>
+                A Wizard of Earthsea
+                NOVEL
+                Autho: Ursula K. LeGuin
+                Stem1: computer science
+                Stem2: HTML
+                Stem3: CSS
+                Scope: entirety
+                Grade: middle, high, college
+                Summary: A young, gifted wizard overreaches his power and creates a terrible danger.
+                                His quest to right this wrong leads to a greater understanding of the interconnectedness of all forces, including himself.
+                Description: 15 one hour classes: Along with the literary action of this YA classic, students explore Earthsea's highly
+                                     systematic magic, its syntax, functions, directory structures and equilibrium, providing a context for learning HTML and CSS.
+
+             </title>
+           </circle>
+
+           <circle cx='50' cy='1300' r='25' fill='grey'>
+             <title>
+                Watership Down
+                NOVEL
+                Author: Richard Adams
+                Stem1: environmental science
+                Stem2: biology
+                Scope: entirety
+                Grade: middle, high
+                Summary: After escaping extermination by humans, a group of rabbits searches for a safe home, learning about
+                                cooperation and competition within and between species.
+                Description: 15 one hour classes: The sentimental action of this classic wildlife novel frames circumstances of population
+                                     biology, zoology and environmental science.
+             </title>
+           </circle>
+
+           <circle cx='250' cy='100' r='25' fill='grey'>
+             <title>
+                Inception
+                FILM
+                Author: Christopher Nolan
+                Stem1: computer science
+                Stem2: recursion
+                Scope: entirety
+                Grade: high, college
+                Summary: In a world where group dreaming is possible, extraction of a dreamer's knowledge becomes a criminal operation.
+                                Cobb, an ace extractor, attempts instead to plant an idea in another, navigating dreams within dreams prowled by his own demons.
+                Description: 2 one hour classes: The nested dream worlds traversed by Cobb provide a highly specific, highly cohesive model
+                                     of recursive functions including calls, base states, return values and scaffolding.
+             </title>
+           </circle>
+       </g>
+      </g>
+
+    </svg>
+
+        <p class="header">Drag it or zoom it...</p>
+        <button class="footer" onClick="window.location.reload();">Reset Zoom</button>
+  </body>
+</html>
