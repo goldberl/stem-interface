@@ -16,11 +16,12 @@
     pointer-events: none;
     }
 .main {
-    background-color: #fff!important;         color: #34495e!important;
+    background-color: #fff!important;         
+    color: #34495e!important;
 }
 .active {
-    background-color: #fff!important; color: #34495e!important;
+    background-color: rgb(92, 235, 84)!important; color: #61a41f!important;
 }
 .inactive {
-    background-color: #60a4bd!important; color: #fff!important;
+    background-color: #c93d35!important; color: #fff!important;
 }
