@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hipólita</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader"> 
+<div class="w3-center">
+<h3>Hipólita</h3>
+<h1 class="w3-large w3-animate-bottom">Sirviente de don Álvaro y doña Beatriz. Atiende la casa de su amo, pero <br> se ve obligada a huir cuando la ira de don Álvaro obliga a doña Beatriz a huir de su hogar. </h1>
+</div>
+</header>
+
+
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-third">
+<div class="w3-card w3-container" style="min-height:460px">
+<h3>Doña Beatriz</h3><br>
+<i class="fa fa-user w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+<p>Uno de sus maestros. Se mantiene cerca de ella <br> mientras se desarrolla todo el dilema entre Beatriz, Alberto <br> y don Álvaro. La mantiene en la casa de Jacinta. </p>
+</div>
+</div>
+
+<div class="w3-third">
+<div class="w3-card w3-container" style="min-height:460px">
+<h3>Dorotea</h3><br>
+<i class="fa fa-user w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+<p>Inicialmente, Hipólita no confiaba en ella, pero <br> la criada se convierte en el alivio cómico de <br> la historia una vez que dejan de lado la debacle del anillo.  </p>
+
+</div>
+</div>
+
+<div class="w3-third">
+<div class="w3-card w3-container" style="min-height:460px">
+<h3>Papagayo</h3><br>
+<i class="fa fa-user w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+<p>Aunque tienen poca conversación a lo <br> largo de la obra, al final Hipólita, siendo fanática de los <br> loros, decide casarse con Papagayo que tiene boca de loro.</p>
+</div>
+</div>
+</div>
+
+
+
+<div class="w3-container">
+<hr>
+
+
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+var x = document.getElementById("mySidebar");
+x.style.width = "100%";
+x.style.fontSize = "40px";
+x.style.paddingTop = "10%";
+x.style.display = "block";
+}
+function w3_close() {
+document.getElementById("mySidebar").style.display = "none";
+}
+
+// Tabs
+function openCity(evt, cityName) {
+var i;
+var x = document.getElementsByClassName("city");
+for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+}
+var activebtn = document.getElementsByClassName("testbtn");
+for (i = 0; i < x.length; i++) {
+    activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
+}
+document.getElementById(cityName).style.display = "block";
+evt.currentTarget.className += " w3-dark-grey";
+}
+
+var mybtn = document.getElementsByClassName("testbtn")[0];
+mybtn.click();
+
+// Accordions
+function myAccFunc(id) {
+var x = document.getElementById(id);
+if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+} else { 
+    x.className = x.className.replace(" w3-show", "");
+}
+}
+
+// Slideshows
+var slideIndex = 1;
+
+function plusDivs(n) {
+slideIndex = slideIndex + n;
+showDivs(slideIndex);
+}
+
+function showDivs(n) {
+var x = document.getElementsByClassName("mySlides");
+if (n > x.length) {slideIndex = 1}    
+if (n < 1) {slideIndex = x.length} ;
+for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+}
+x[slideIndex-1].style.display = "block";  
+}
+
+showDivs(1);
+
+// Progress Bars
+function move() {
+var elem = document.getElementById("myBar");   
+var width = 5;
+var id = setInterval(frame, 10);
+function frame() {
+    if (width == 100) {
+    clearInterval(id);
+    } else {
+    width++; 
+    elem.style.width = width + '%'; 
+    elem.innerHTML = width * 1  + '%';
+    }
+}
+}
+</script>
+
+</body>
+</html>
